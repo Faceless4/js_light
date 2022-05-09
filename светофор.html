@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div id="traffic">
+    <div class="light red "></div>
+    <div class="light yellow"></div>
+    <div class="light green"></div>
+</div>
+
+<style>
+    #traffic {
+
+        width: 70px;
+        height: 200px;
+        background: #666666;
+        border-radius: 8px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+
+    }
+
+    .light {
+        display: inline-block;
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+
+        margin-bottom: 8px;
+
+    }
+
+    .red {
+        background: red;
+        opacity: 0.5;
+    }
+
+    .yellow {
+        background: yellow;
+        opacity: 0.5;
+    }
+
+    .green {
+        background: green;
+        opacity: 0.5;
+    }
+
+    .active {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.light')
+        .forEach(light => {
+            light.addEventListener('click', e => {
+                setTimeout(()=> onLightClick(e, light), 2000)
+            });
+        });
+
+    function onLightClick(e, clickedLight) {
+        let x
+        if (clickedLight.classList.contains("active")) {
+            x = true
+        } else {
+            x = false
+        }
+        document.querySelectorAll('.light')
+
+            .forEach(light => {
+                light.classList.remove("active");
+            });
+
+        clickedLight.classList.add("active")
+        if (x) {
+            clickedLight.classList.remove("active")
+        }
+    }
+
+
+</script>
